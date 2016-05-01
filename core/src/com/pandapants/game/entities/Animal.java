@@ -69,6 +69,15 @@ public class Animal {
 	}*/
 	
 	public Animal(String atlas_file, float duration) {
+		Load_Animal_File(atlas_file, duration);		
+	}
+	
+	public Animal(String animal_name, String animation_name, float duration) {
+		String atlas_file = "entities/" + animal_name + "_" + animation_name + ".atlas";
+		Load_Animal_File(atlas_file, duration);	
+	}
+	
+	private void Load_Animal_File(String atlas_file, float duration) {
 		animation_array = new Array<Animation>(NUM_DIRECTIONS);
 		animations = new ArrayMap<Integer , Array<Animation>>(NUM_ANIMATION_TYPES);
 		

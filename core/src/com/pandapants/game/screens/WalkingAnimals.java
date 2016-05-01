@@ -50,12 +50,23 @@ public class WalkingAnimals implements Screen {
 	}
 
 	private void Load_Animals() {
+		String[] animal_list = new String[] {
+			"chicken",
+			"cow",
+			"llama",
+			"pig",
+			"sheep"
+		};
+		
 		animals = new Array<Animal>();
-		animals.add(new Animal("entities/chicken_walk.atlas", frame_duration));
+		for(int i = 0; i < animal_list.length; i++) {
+			animals.add(new Animal(animal_list[i], "walk", frame_duration));
+		}
+		/*animals.add(new Animal("entities/chicken_walk.atlas", frame_duration));
 		animals.add(new Animal("entities/cow_walk.atlas", frame_duration));
 		animals.add(new Animal("entities/llama_walk.atlas", frame_duration));
 		animals.add(new Animal("entities/pig_walk.atlas", frame_duration));
-		animals.add(new Animal("entities/sheep_walk.atlas", frame_duration));
+		animals.add(new Animal("entities/sheep_walk.atlas", frame_duration));*/
 	}
 
 	@Override
