@@ -2,27 +2,24 @@ package com.pandapants.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.pandapants.game.MaiseyMouse;
 
-public class MainMenuScreen implements Screen{
-	final MaiseyMouse game;
+public class MainMenuScreen extends BaseScreen{
 	
-	OrthographicCamera camera;
 	
 	final GlyphLayout layout;
 	final String title = "MAISEY'S GAME";
 	
+	//MouseFireworks fireworks;
+	
 	public MainMenuScreen(final MaiseyMouse _game) {
-		game = _game;
-		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, game.Screen_Width, game.Screen_Height);
+		super(_game);		
 
 		layout = new GlyphLayout(game.title_font, title);
+		
+		//fireworks = new MouseFireworks(game);
 	}
 
 	@Override
@@ -32,12 +29,14 @@ public class MainMenuScreen implements Screen{
 	}
 
 	@Override
-	public void render(float delta) {
+	public void render(float delta) {		
 		Gdx.gl.glClearColor(0, 0, 0.2f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		camera.update();
-		game.batch.setProjectionMatrix(camera.combined);
+		super.render(delta);
+		
+//		fireworks.move_fireworks(Gdx.input.getX(), Gdx.input.getY());
+//		fireworks.render(delta);
 		
 		game.batch.begin();
 		game.title_font.draw(game.batch, layout, 
@@ -86,7 +85,7 @@ public class MainMenuScreen implements Screen{
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
+		super.dispose();
 		
 	}
 }

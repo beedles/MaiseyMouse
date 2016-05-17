@@ -4,20 +4,14 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.utils.Array;
 import com.pandapants.game.MaiseyMouse;
 import com.pandapants.game.entities.Animal;
 
-public class WalkingAnimals implements Screen {
-	final MaiseyMouse game;
-	
-	OrthographicCamera camera;
-	
+public class WalkingAnimals extends BaseScreen {
 	Color screen_colour;
 	
 	final GlyphLayout layout;
@@ -36,17 +30,13 @@ public class WalkingAnimals implements Screen {
 	int animal_scale = 4;
 	
 	public WalkingAnimals(final MaiseyMouse _game) {
-		game = _game;
-		
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, game.Screen_Width, game.Screen_Height);
+		super(_game);
 		
 		screen_colour = new Color(0.5f, 0.5f, 0.2f, 1);
 		layout = new GlyphLayout(game.title_font, title);
 		
 		//Load Animal texture regions
-		Load_Animals();
-		
+		Load_Animals();		
 	}
 
 	private void Load_Animals() {
@@ -81,8 +71,7 @@ public class WalkingAnimals implements Screen {
 				screen_colour.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		camera.update();
-		game.batch.setProjectionMatrix(camera.combined);
+		super.render(delta);
 		
 		game.batch.begin();
 		
@@ -209,8 +198,7 @@ public class WalkingAnimals implements Screen {
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
-		
+		super.dispose();		
 	}
 	
 }
