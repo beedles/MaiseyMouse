@@ -1,7 +1,5 @@
 package com.pandapants.game.screens;
 
-import java.util.Random;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -45,11 +43,13 @@ public class BaseScreen implements Screen {
 		
 		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
 			Gdx.app.log("Audio", "Sending SOund");
-			Random rand = new Random();
+			/*Random rand = new Random();
 			int f_lo = 200;
 			int f_hi = 2000;
 			int freq = rand.nextInt(f_hi - f_lo) + f_lo;
-			test_sound.play_sound(0.5f, freq);
+			test_sound.play_sound(0.5f, freq);*/
+			//test_sound.play_note("C", false, 4, 2);
+			test_sound.play_twinkle_twinkle();
 		}
 
 	}
